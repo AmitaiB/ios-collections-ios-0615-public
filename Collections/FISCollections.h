@@ -12,4 +12,6 @@
 
 //declare methods here
 
+-(NSArray *)sortArrayAsc:(NSArray *)inputArray;
+
 @end

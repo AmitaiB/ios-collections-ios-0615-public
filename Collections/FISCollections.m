@@ -11,5 +11,12 @@
 @implementation FISCollections
 
 //define methods here
+-(NSArray *)sortArrayAsc:(NSArray *)inputArray
+{
+    NSSortDescriptor *sortArrayAscDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
+    return [inputArray sortedArrayUsingDescriptors:@[sortArrayAscDescriptor]];
+    
+}
+
 
 @end
