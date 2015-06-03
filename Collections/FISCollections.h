@@ -18,4 +18,6 @@
 
 -(NSArray *)swapElements:(NSArray *)inputArray;
 
+-(NSArray *)reverseArray:(NSArray *)inputArray;
+
 @end

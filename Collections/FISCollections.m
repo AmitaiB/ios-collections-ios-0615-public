@@ -25,11 +25,19 @@
     NSSortDescriptor *sortArrayDescDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
     NSArray *sortedArray = [inputArray sortedArrayUsingDescriptors:@[sortArrayDescDescriptor]];
     
-    return sortedArray; 
+    return sortedArray;
     
 }
 
 -(NSArray *)swapElements:(NSArray *)inputArray
+{
+    NSMutableArray *outputArray = [[NSMutableArray alloc] initWithArray:inputArray];
+    outputArray[2] = inputArray[3];
+    outputArray[3] = inputArray[2];
+    return outputArray;
+}
+
+-(NSArray *)reverseArray:(NSArray *)inputArray
 {
     NSMutableArray *outputArray = [[NSMutableArray alloc] init];
     for (NSInteger i = inputArray.count-1; i > 0; i--) {
