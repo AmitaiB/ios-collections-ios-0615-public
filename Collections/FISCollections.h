@@ -14,4 +14,6 @@
 
 -(NSArray *)sortArrayAsc:(NSArray *)inputArray;
 
+-(NSArray *)sortArrayDesc:(NSArray *)inputArray;
+
 @end

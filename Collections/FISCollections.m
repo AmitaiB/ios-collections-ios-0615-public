@@ -14,7 +14,18 @@
 -(NSArray *)sortArrayAsc:(NSArray *)inputArray
 {
     NSSortDescriptor *sortArrayAscDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
-    return [inputArray sortedArrayUsingDescriptors:@[sortArrayAscDescriptor]];
+    NSArray *sortedArray = [inputArray sortedArrayUsingDescriptors:@[sortArrayAscDescriptor]];
+    
+    return sortedArray;
+    
+}
+
+-(NSArray *)sortArrayDesc:(NSArray *)inputArray
+{
+    NSSortDescriptor *sortArrayDescDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+    NSArray *sortedArray = [inputArray sortedArrayUsingDescriptors:@[sortArrayDescDescriptor]];
+    
+    return sortedArray;
     
 }
 
