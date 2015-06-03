@@ -16,4 +16,6 @@
 
 -(NSArray *)sortArrayDesc:(NSArray *)inputArray;
 
+-(NSArray *)swapElements:(NSArray *)inputArray;
+
 @end

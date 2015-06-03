@@ -29,5 +29,13 @@
     
 }
 
+-(NSArray *)swapElements:(NSArray *)inputArray
+{
+    NSMutableArray *outputArray = [[NSMutableArray alloc] init];
+    for (NSInteger i = inputArray.count-1; i > 0; i--) {
+        [outputArray addObject:inputArray[i]];
+    }
+    return outputArray;
+}
 
 @end
