@@ -46,4 +46,11 @@
     return outputArray;
 }
 
+-(NSArray *)keshaMaker:(NSArray *)inputArray
+{
+    NSMutableArray *outputArray = [[NSMutableArray alloc] initWithArray:inputArray];
+    [outputArray[3] replaceCharactersInRange:NSRangeFromString(@"3,1") withString:@"$"];
+    return outputArray;
+}
+
 @end

@@ -20,4 +20,6 @@
 
 -(NSArray *)reverseArray:(NSArray *)inputArray;
 
+-(NSArray *)keshaMaker:(NSArray *)inputArray;
+
 @end
