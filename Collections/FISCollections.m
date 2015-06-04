@@ -78,37 +78,4 @@
     return outputArray;
 }
 
-/*
-//I created a helper method, reverseDictionary...
--(NSArray *)findWinners:(NSDictionary*)inputDictionary
-{
-    NSMutableArray *outputArray = [[NSMutableArray alloc] init];
-    NSDictionary *flippedDictionary = [self reverseDictionary:inputDictionary];
-//    NSDictionary *flippedDictionary = [[NSDictionary alloc] initWithDictionary:inputDictionary];
-    for (NSString *winnerOrLoserKey in flippedDictionary) {
-        if ([winnerOrLoserKey isEqual: @"winner"]) {
-            outputArray addObject:flippedDictionary[winnerOrLoserKey]
-        }
-    }
-    
-    return outputArray;
-}
-*/
- 
- 
--(NSDictionary *)reverseDictionary:(NSDictionary*)inputDictionary
-{
-    NSArray *inputKeys = [inputDictionary allKeys];
-    NSMutableArray *inputValues = [[NSMutableArray alloc] init];
-
-    for (NSString *key in inputKeys) {
-        NSString *value = [inputDictionary valueForKey:key];
-        [inputValues addObject:value];
-    }
-    
-    NSDictionary *theReversedDictionary = [[NSDictionary alloc] initWithObjects:inputKeys forKeys:inputValues];
-    
-    return theReversedDictionary;
-}
-
 @end
