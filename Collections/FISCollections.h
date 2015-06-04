@@ -42,6 +42,7 @@
 -(NSArray *)addS:(NSArray*)inputArray;
 
 //Test 11
+-(NSDictionary *)countWordsInStory:(NSString *)inputString;
 
 //Test 12
 @end

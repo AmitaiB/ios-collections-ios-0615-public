@@ -104,12 +104,27 @@
 {
     NSMutableArray *outputArray = [inputArray mutableCopy];
     for (NSInteger i = 0; i < [inputArray count]; i++) {
-        if (i != @2) {
+        if (i != 2) {
             [outputArray[i] appendString:@"s"];
         }
     }
 
     return outputArray;
+}
+
+-(NSDictionary *)countWordsInStory:(NSString*)inputString
+{
+    
+    NSArray *seperatedWords = [inputString componentsSeparatedByString:@" "];
+    NSMutableArray *sepWordsIndex = [[NSMutableArray alloc] init];
+    
+    for (NSInteger i = 0; i < [seperatedWords count]; i++) {
+        [sepWordsIndex addObject:[NSString stringWithFormat:@"%ld", (long)i]];
+    }
+    
+    NSDictionary *outputDictionary = [NSDictionary dictionaryWithObjects:seperatedWords forKeys:sepWordsIndex];
+    
+    return outputDictionary;
 }
 
 
