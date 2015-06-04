@@ -69,7 +69,9 @@
 //I created a helper method, reverseDictionary...
 -(NSArray *)findWinners:(NSDictionary*)inputDictionary
 {
-    NSDictionary *flippedDictionary = [inputDictionary reverseDictionary];
+    NSMutableArray *outputArray = [[NSMutableArray alloc] init];
+    NSDictionary *flippedDictionary = [self reverseDictionary:inputDictionary];
+//    NSDictionary *flippedDictionary = [[NSDictionary alloc] initWithDictionary:inputDictionary];
     return outputArray;
 }
 
@@ -83,11 +85,9 @@
         [inputValues addObject:value];
     }
     
-    NSDictionary *reverseDictionary = [[NSDictionary alloc] initWithObjects:inputKeys forKeys:inputValues];
+    NSDictionary *theReversedDictionary = [[NSDictionary alloc] initWithObjects:inputKeys forKeys:inputValues];
     
-    
-    
-    return reverseDictionary;
+    return theReversedDictionary;
 }
 
 @end
