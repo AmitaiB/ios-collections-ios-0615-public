@@ -104,12 +104,12 @@
 {
     NSMutableArray *outputArray = [inputArray mutableCopy];
     for (NSInteger i = 0; i < [inputArray count]; i++) {
-        if (i != 2) {
-            [outputArray[i] appendString:@"s"];
+        if (i != 1) {
+            [outputArray[i] = [outputArray[i] mutableCopy] appendString:@"s"];
         }
     }
-
-    return outputArray;
+    NSLog(@"%@", outputArray);
+    return [outputArray copy];
 }
 
 -(NSDictionary *)countWordsInStory:(NSString*)inputString
@@ -125,6 +125,7 @@
             wordCountLedger[word] = @([wordCountLedger[word] intValue] + 1);
         }
     }
+    NSLog(@"%@", wordCountLedger);
     return [wordCountLedger copy];
 }
 
