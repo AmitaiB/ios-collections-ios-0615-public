@@ -53,4 +53,41 @@
     return outputArray;
 }
 
+-(NSDictionary *)greaterAndLessThan10:(NSArray *)inputArray
+{
+    NSPredicate *greaterThan10 = [NSPredicate predicateWithFormat:@"self>%ul",10];
+    NSPredicate *lessThan10    = [NSPredicate predicateWithFormat:@"self<%ul",10];
+
+    NSArray *greater_than_10 = [NSMutableArray arrayWithArray:[inputArray filteredArrayUsingPredicate:greaterThan10]];
+    NSArray *less_than_10 = [NSMutableArray arrayWithArray:[inputArray filteredArrayUsingPredicate:lessThan10]];
+    
+    NSDictionary *outputDictionary = [NSDictionary dictionaryWithObjects:@[greater_than_10, less_than_10] forKeys:@[@"greater_than_10", @"less_than_10"]];
+    
+    return outputDictionary;
+}
+
+//I created a helper method, reverseDictionary...
+-(NSArray *)findWinners:(NSDictionary*)inputDictionary
+{
+    NSDictionary *flippedDictionary = [inputDictionary reverseDictionary];
+    return outputArray;
+}
+
+-(NSDictionary *)reverseDictionary:(NSDictionary*)inputDictionary
+{
+    NSArray *inputKeys = [inputDictionary allKeys];
+    NSMutableArray *inputValues = [[NSMutableArray alloc] init];
+
+    for (NSString *key in inputKeys) {
+        NSString *value = [inputDictionary valueForKey:key];
+        [inputValues addObject:value];
+    }
+    
+    NSDictionary *reverseDictionary = [[NSDictionary alloc] initWithObjects:inputKeys forKeys:inputValues];
+    
+    
+    
+    return reverseDictionary;
+}
+
 @end

@@ -22,4 +22,10 @@
 
 -(NSArray *)keshaMaker:(NSArray *)inputArray;
 
+-(NSDictionary *)greaterAndLessThan10:(NSArray *)inputArray;
+
+-(NSArray *)findWinners:(NSDictionary*)inputDictionary;
+
+-(NSDictionary *)reverseDictionary:(NSDictionary*)inputDictionary;
+
 @end
