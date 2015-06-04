@@ -32,8 +32,8 @@
 -(NSArray *)swapElements:(NSArray *)inputArray
 {
     NSMutableArray *outputArray = [[NSMutableArray alloc] initWithArray:inputArray];
-    outputArray[2] = inputArray[3];
-    outputArray[3] = inputArray[2];
+    outputArray[2] = inputArray[1];
+    outputArray[1] = inputArray[2];
     return outputArray;
 }
 
@@ -140,16 +140,19 @@
     //II New Dictionary!
     NSMutableDictionary *newPlayList = [@{} mutableCopy];
     
+    //Keep in mind!: The keys(Artists) are all in the [0] column, and the paired-values are all in the [1] column.
+    //If the artist is already listed, add the song to the existing discography.
+    //Else, add the artist to the list, and create a discography with that song as the first element.
     [oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
-        [newPlayList setValue:[self stringTrimmer:artistSongPair[1]] forKey:[self stringTrimmer:artistSongPair[0]];
+        if ([[newPlayList allKeys] containsObject:artistSongPair[0]]) {
+            NSMutableArray *tempSongs = [NSMutableArray arrayWithArray:[newPlayList valueForKey:artistSongPair[0]]];
+            [tempSongs addObject:artistSongPair[1]];
+            [newPlayList setObject:tempSongs forKey:artistSongPair[0]];
+            //newPlayList [the key we found is already there] [change the value = set it to a new array based on the old]
+        } else {
+        [newPlayList setValue:[self stringTrimmer:artistSongPair[1]] forKey:[self stringTrimmer:artistSongPair[0]]];
+        }
     }];
-    
-//    //IIa Fill the new dictionary!
-//    oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
-//        [newPlayList setValue:artistSongPair[1] forKey:artistSongPair[0]];
-//    }
-
-    
     
     return newPlayList;
 }
