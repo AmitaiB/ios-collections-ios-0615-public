@@ -130,8 +130,14 @@
 -(NSDictionary *)organizeSongsByArtist:(NSArray*)songsToOrganize
 {
     NSMutableDictionary *dictionaryOfOrganizedSongs = [[NSMutableDictionary alloc] init];
-    NSArray* songArtistInArray = [songsToOrganize[0] componentsSeparatedByString:@"-"];
-    NSDictionary* songByArtist = [NSDictionary dictionaryWithObjects:songArtistInArray[1] forKeys:songArtistInArray[0]];
+    
+//    breaks the string into [Artist -] [song]
+    NSMutableArray* songArtistInArrayForm = [[songsToOrganize[0] componentsSeparatedByString:@"-"] mutableCopy];
+    
+    //Just the first song, first
+    songArtistInArrayForm[0] = [songArtistInArrayForm[0] mutableCopy];
+    [songArtistInArrayForm[0] replaceOccurrencesOfString:@"-" withString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange(0, [[songArtistInArrayForm[0] length]])];
+    NSDictionary* songByArtist = [NSDictionary dictionaryWithObjects:songArtistInArrayForm[1] forKeys:songArtistInArrayForm[0]];
     
     
     
