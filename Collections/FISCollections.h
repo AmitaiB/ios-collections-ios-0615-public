@@ -28,4 +28,6 @@
 
 -(NSArray *)findA:(NSArray*)inputArray;
 
+-(NSInteger *)sumArray:(NSArray*)inputArray
+
 @end

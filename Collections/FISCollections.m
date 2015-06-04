@@ -89,4 +89,16 @@
     return outputArray;
 }
 
+-(NSInteger *)sumArray:(NSArray*)inputArray
+{
+    NSInteger total = 0;
+    
+    for (NSNumber *number in inputArray) {
+        total = total + [number integerValue];
+    }
+    
+    return total;
+}
+
+
 @end
