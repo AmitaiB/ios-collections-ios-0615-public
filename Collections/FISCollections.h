@@ -46,4 +46,6 @@
 
 //Test 12
 -(NSDictionary *)organizeSongsByArtist:(NSArray*)songsToOrganize;
+
+-(NSMutableString *)stringTrimmer:(NSMutableString *)inputString;
 @end

@@ -127,65 +127,38 @@
     return outputDictionary;
 }
 
--(NSDictionary *)organizeSongsByArtist:(NSArray*)playList
+-(NSDictionary *)organizeSongsByArtist:(NSArray*)inputPlayList
 {
-    /*
-     1) NSArray --> loop over ea. NSString:                         [extract each song from the playlist]
-     
-        A) NSString --split--> NSArray[NSStrings]                   [split the artist from the song, returns an array]  (now we have an array of arrays)
-        1) NSArray[NSStrings] --> loop over ea. NSString:
-     
-            B) NSString --trim--> NSString:                         [trim each element in the array (recursive?)] (now we have a trimmed array of arrays)
-     
-     */
     
+    //I Array of Strings --> Array of Arrays
+    NSMutableArray *oldPlayList = [inputPlayList mutableCopy];
     
+    for (NSUInteger i = 0; i < [oldPlayList count]; i++) {
+        [oldPlayList[i] replaceObjectAtIndex:i withObject:[oldPlayList[i] componentsSeparatedByString:@"-"]];
+    }
     
-//    NSMutableArray *artistNoHyphenSong = [[NSMutableArray alloc] init];
-//    NSMutableArray *artistThenSongTrimmed = [[NSMutableArray alloc] init];
-//    //"for" loop is Phase I --> II
-//    for (NSString *artistHyphenSong in playList) {
-//        [artistNoHyphenSong addObject: [artistHyphenSong componentsSeparatedByString:@"-"]]; //-->Phase III
-//        for (NSString *artistThenSong in artistNoHyphenSong) {
-//            artistThenSong
-//        }
+    //II New Dictionary!
+    NSMutableDictionary *newPlayList = [@{} mutableCopy];
+    
+    [oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
+        [newPlayList setValue:[self stringTrimmer:artistSongPair[1]] forKey:[self stringTrimmer:artistSongPair[0]];
+    }];
+    
+//    //IIa Fill the new dictionary!
+//    oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
+//        [newPlayList setValue:artistSongPair[1] forKey:artistSongPair[0]];
 //    }
-//    
-//    NSString *startSmall = songsToOrganize[0];
-//    
-//    
-//    
-//    NSMutableDictionary *dictionaryOfOrganizedSongs = [[NSMutableDictionary alloc] init];
-//    
-////    breaks the string into [Artist -] [song]
-//    NSMutableArray* songArtistInArrayForm = [[songsToOrganize[0] componentsSeparatedByString:@"-"] mutableCopy];
-//    
-//    //Just the first song, first
-//    songArtistInArrayForm[0] = [songArtistInArrayForm[0] mutableCopy];
-//    [songArtistInArrayForm[0] replaceOccurrencesOfString:@"-" withString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange(0, [[songArtistInArrayForm[0] length]])];
-//    NSDictionary* songByArtist = [NSDictionary dictionaryWithObjects:songArtistInArrayForm[1] forKeys:songArtistInArrayForm[0]];
-//    
-//    
-//    
-//    return dictionaryOfOrganizedSongs;
+
+    
+    
+    return newPlayList;
 }
 
+-(NSMutableString *)stringTrimmer:(NSMutableString *)inputString {
+    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    
+    return [[inputString stringByTrimmingCharactersInSet:whitespace] mutableCopy];
+};
+
+
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
