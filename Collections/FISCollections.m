@@ -100,5 +100,18 @@
     return total;
 }
 
+-(NSArray *)addS:(NSArray*)inputArray
+{
+    NSMutableArray *outputArray = [inputArray mutableCopy];
+    for (NSInteger i = 0; i < [inputArray count]; i++) {
+        if (i != @2) {
+            [outputArray[i] appendString:@"s"];
+        }
+    }
+
+    return outputArray;
+}
+
+
 
 @end
