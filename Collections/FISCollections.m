@@ -40,7 +40,7 @@
 -(NSArray *)reverseArray:(NSArray *)inputArray
 {
     NSMutableArray *outputArray = [[NSMutableArray alloc] init];
-    for (NSInteger i = inputArray.count-1; i > 0; i--) {
+    for (NSInteger i = inputArray.count-1; i >= 0; i--) {
         [outputArray addObject:inputArray[i]];
     }
     return outputArray;
@@ -75,7 +75,7 @@
         }
     }
     
-    return outputArray;
+    return [outputArray copy];
 }
 
 -(NSArray *)findA:(NSArray*)inputArray
@@ -116,15 +116,16 @@
 {
     
     NSMutableArray *seperatedWords = [[inputString componentsSeparatedByString:@" "] mutableCopy];
-    NSMutableArray *sepWordsIndex = [[NSMutableArray alloc] init];
+    NSMutableDictionary *wordCountLedger = [[NSMutableDictionary alloc] init];
     
-    for (NSInteger i = 0; i < [seperatedWords count]; i++) {
-        [sepWordsIndex addObject:[NSString stringWithFormat:@"%ld", (long)i]];
+    for (NSString *word in seperatedWords) {
+        if ([seperatedWords containsObject:word]) {
+            [wordCountLedger setObject:@1 forKey:word];
+        } else {
+            wordCountLedger[word] = @([wordCountLedger[word] intValue] + 1);
+        }
     }
-    
-    NSDictionary *outputDictionary = [NSDictionary dictionaryWithObjects:seperatedWords forKeys:sepWordsIndex];
-    
-    return outputDictionary;
+    return [wordCountLedger copy];
 }
 
 -(NSDictionary *)organizeSongsByArtist:(NSArray*)inputPlayList
