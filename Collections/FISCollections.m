@@ -78,4 +78,15 @@
     return outputArray;
 }
 
+-(NSArray *)findA:(NSArray*)inputArray
+{
+    NSMutableArray *outputArray = [@[] mutableCopy];
+    for (NSString *word in inputArray) {
+        if ([word hasPrefix:@"a"]) {
+            [outputArray addObject:word];
+        }
+    }
+    return outputArray;
+}
+
 @end

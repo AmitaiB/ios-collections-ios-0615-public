@@ -26,6 +26,6 @@
 
 -(NSArray *)findWinners:(NSDictionary*)inputDictionary;
 
--(NSDictionary *)reverseDictionary:(NSDictionary*)inputDictionary;
+-(NSArray *)findA:(NSArray*)inputArray;
 
 @end
