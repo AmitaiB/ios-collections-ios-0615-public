@@ -129,20 +129,32 @@
 
 -(NSDictionary *)organizeSongsByArtist:(NSArray*)playList
 {
-    NSMutableArray *artistNoHyphenSong = [[NSMutableArray alloc] init];
-    NSMutableArray *artistThenSongTrimmed = [[NSMutableArray alloc] init];
-    //"for" loop is Phase I --> II
-    for (NSString *artistHyphenSong in playList) {
-        [artistNoHyphenSong addObject: [artistHyphenSong componentsSeparatedByString:@"-"]]; //-->Phase III
-        for (NSString *artistThenSong in artistNoHyphenSong) {
-            artistThenSong
-        }
-    }
-    
-    NSString *startSmall = songsToOrganize[0];
+    /*
+     1) NSArray --> loop over ea. NSString:                         [extract each song from the playlist]
+     
+        A) NSString --split--> NSArray[NSStrings]                   [split the artist from the song, returns an array]  (now we have an array of arrays)
+        1) NSArray[NSStrings] --> loop over ea. NSString:
+     
+            B) NSString --trim--> NSString:                         [trim each element in the array (recursive?)] (now we have a trimmed array of arrays)
+     
+     */
     
     
     
+//    NSMutableArray *artistNoHyphenSong = [[NSMutableArray alloc] init];
+//    NSMutableArray *artistThenSongTrimmed = [[NSMutableArray alloc] init];
+//    //"for" loop is Phase I --> II
+//    for (NSString *artistHyphenSong in playList) {
+//        [artistNoHyphenSong addObject: [artistHyphenSong componentsSeparatedByString:@"-"]]; //-->Phase III
+//        for (NSString *artistThenSong in artistNoHyphenSong) {
+//            artistThenSong
+//        }
+//    }
+//    
+//    NSString *startSmall = songsToOrganize[0];
+//    
+//    
+//    
 //    NSMutableDictionary *dictionaryOfOrganizedSongs = [[NSMutableDictionary alloc] init];
 //    
 ////    breaks the string into [Artist -] [song]
