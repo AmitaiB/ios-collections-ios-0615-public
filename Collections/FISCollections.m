@@ -115,7 +115,7 @@
 -(NSDictionary *)countWordsInStory:(NSString*)inputString
 {
     
-    NSArray *seperatedWords = [inputString componentsSeparatedByString:@" "];
+    NSMutableArray *seperatedWords = [[inputString componentsSeparatedByString:@" "] mutableCopy];
     NSMutableArray *sepWordsIndex = [[NSMutableArray alloc] init];
     
     for (NSInteger i = 0; i < [seperatedWords count]; i++) {
@@ -127,6 +127,33 @@
     return outputDictionary;
 }
 
-
+-(NSDictionary *)organizeSongsByArtist:(NSArray*)songsToOrganize
+{
+    NSMutableDictionary *dictionaryOfOrganizedSongs = [[NSMutableDictionary alloc] init];
+    NSArray* songArtistInArray = [songsToOrganize[0] componentsSeparatedByString:@"-"];
+    NSDictionary* songByArtist = [NSDictionary dictionaryWithObjects:songArtistInArray[1] forKeys:songArtistInArray[0]];
+    
+    
+    
+    return dictionaryOfOrganizedSongs;
+}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

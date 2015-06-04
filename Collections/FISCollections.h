@@ -45,4 +45,5 @@
 -(NSDictionary *)countWordsInStory:(NSString *)inputString;
 
 //Test 12
+-(NSDictionary *)organizeSongsByArtist:(NSArray*)songsToOrganize;
 @end
