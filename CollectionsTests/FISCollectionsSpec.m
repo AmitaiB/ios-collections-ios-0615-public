@@ -108,7 +108,7 @@ describe(@"FISCollections", ^{
     
 //    Question 8
     describe(@"findA:", ^{
-        it(@"find all words that begin with 'a' in teh following array",^{
+        it(@"find all words that begin with 'a' in the following array",^{
             NSArray *result = [collection findA:@[@"apple",@"orange",@"pear",@"avis",@"arlo",@"ascot"]];
             expect(result).to.equal(@[@"apple",@"avis",@"arlo",@"ascot"]);
         });
