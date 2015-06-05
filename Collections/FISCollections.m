@@ -139,10 +139,10 @@
     NSMutableDictionary *wordCountLedger = [[NSMutableDictionary alloc] init];
     
     for (NSString *word in seperatedWords) {
-        if ([seperatedWords containsObject:word]) {
-            [wordCountLedger setObject:@1 forKey:word];
-        } else {
+        if ([[wordCountLedger allKeys] containsObject:word]) {
             wordCountLedger[word] = @([wordCountLedger[word] intValue] + 1);
+        } else {
+            [wordCountLedger setObject:@1 forKey:word];
         }
     }
     NSLog(@"%@", wordCountLedger);
