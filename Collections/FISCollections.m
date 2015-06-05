@@ -46,11 +46,31 @@
     return outputArray;
 }
 
--(NSArray *)keshaMaker:(NSArray *)inputArray
+-(NSArray *)keshaMaker:(NSArray *)normalNamesArray
 {
-    NSMutableArray *outputArray = [[NSMutableArray alloc] initWithArray:inputArray];
-    [outputArray[3] replaceCharactersInRange:NSRangeFromString(@"3,1") withString:@"$"];
-    return outputArray;
+//    NSRange *thirdElement =
+//    
+//    [[NSRange alloc ] NSRangeFromString(@"3,1")];
+//    [NSRangeFromString(@"3,1")];
+//withString:@"$"
+    NSMutableArray *mutableNamesArray = [[NSMutableArray alloc] initWithArray:normalNamesArray];
+
+    for (NSInteger i = 0; i < [mutableNamesArray count]; i++) {
+        NSArray *immutableName = mutableNamesArray[i];
+        NSMutableString *mutableName = [immutableName mutableCopy];
+        [mutableName replaceCharactersInRange:NSMakeRange(3, 1) withString:@"$"];
+        [mutableNamesArray replaceObjectAtIndex:2 withObject:mutableName];
+    }
+
+    
+        NSMutableArray *mOutputArray = [(NSArray*)mutableNamesArray[i] mutableCopy];
+        
+//        [mOutputArray replaceCharactersInRange:[];
+//        [outputArray[i] =
+    }
+    
+    
+    return mutableNamesArray;
 }
 
 -(NSDictionary *)greaterAndLessThan10:(NSArray *)inputArray
