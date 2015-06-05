@@ -158,7 +158,7 @@
     for (NSUInteger i = 0; i < [oldPlayList count]; i++) {
         [oldPlayList[i] replaceObjectAtIndex:i withObject:[oldPlayList[i] componentsSeparatedByString:@"-"]];
     }
-    
+    NSLog(@"The array values: %@", [oldPlayList description]);
     //II New Dictionary!
     NSMutableDictionary *newPlayList = [@{} mutableCopy];
     
@@ -178,7 +178,6 @@
         [newPlayList setValue:theDiscography forKey:theArtist];
         }
     }];
-    
     return newPlayList;
 }
 
