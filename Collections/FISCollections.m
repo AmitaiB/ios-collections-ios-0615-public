@@ -58,19 +58,19 @@
     for (NSInteger i = 0; i < [mutableNamesArray count]; i++) {
         NSArray *immutableName = mutableNamesArray[i];
         NSMutableString *mutableName = [immutableName mutableCopy];
-        [mutableName replaceCharactersInRange:NSMakeRange(3, 1) withString:@"$"];
-        [mutableNamesArray replaceObjectAtIndex:2 withObject:mutableName];
+        [mutableName replaceCharactersInRange:NSMakeRange(2, 1) withString:@"$"];
+        [mutableNamesArray replaceObjectAtIndex:i withObject:mutableName];
     }
 
     
-        NSMutableArray *mOutputArray = [(NSArray*)mutableNamesArray[i] mutableCopy];
-        
+//        NSMutableArray *mOutputArray = [(NSArray*)mutableNamesArray[i] mutableCopy];
+    
 //        [mOutputArray replaceCharactersInRange:[];
 //        [outputArray[i] =
-    }
     
     
-    return mutableNamesArray;
+    
+    return [mutableNamesArray copy];
 }
 
 -(NSDictionary *)greaterAndLessThan10:(NSArray *)inputArray
