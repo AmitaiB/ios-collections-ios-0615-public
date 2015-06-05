@@ -167,7 +167,7 @@
     //Else, add the artist to the list, and create a discography with that song as the first element.
     [oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
         NSString *theArtist = [self stringTrimmer:artistSongPair[0]];
-        NSArray *theDiscography = [self stringTrimmer:artistSongPair[1]];
+        NSArray *theDiscography = @[[self stringTrimmer:artistSongPair[1]]];
         
         if ([[newPlayList allKeys] /* already */ containsObject:theArtist]) {
             NSMutableArray *tempSongs = [NSMutableArray arrayWithArray:[newPlayList valueForKey:theArtist]];
