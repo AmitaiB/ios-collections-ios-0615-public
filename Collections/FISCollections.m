@@ -149,34 +149,31 @@
     return [wordCountLedger copy];
 }
 
--(NSDictionary *)organizeSongsByArtist:(NSArray*)inputPlayList
+-(NSDictionary *)organizeSongsByArtist:(NSArray*)immutableInputPlayList
 {
     
-    //I Array of Strings --> Array of Arrays
-    NSMutableArray *oldPlayList = [inputPlayList mutableCopy];
+//    I Array of Strings --> Array of Arrays
+    NSMutableArray *mutableInputPlayList = [immutableInputPlayList mutableCopy];
     
-    for (NSUInteger i = 0; i < [oldPlayList count]; i++) {
-//        NSLog(@"ABOVE: Hello from inside the for loop! Oh, and oldPlayList[i] is: %@", oldPlayList[i]);
-        [oldPlayList replaceObjectAtIndex:i withObject:[oldPlayList[i] componentsSeparatedByString:@"-"]];
-        
-//        NSLog(@"BELOW: Hello from inside the for loop! Oh, and oldPlayList[i] is: %@", [oldPlayList[i] description]);
+    for (NSUInteger i = 0; i < [mutableInputPlayList count]; i++) {
+        [mutableInputPlayList replaceObjectAtIndex:i withObject:[mutableInputPlayList[i] componentsSeparatedByString:@"-"]];
     }
-    NSLog(@"The array values: %@", [oldPlayList description]);
-    //II New Dictionary!
+    
+//    II New Dictionary!
     NSMutableDictionary *newPlayList = [[NSMutableDictionary alloc] init];
     
-    //Keep in mind!: The keys(Artists) are all in the [0] column, and the paired-values are all in the [1] column.
-    //If the artist is already listed, add the song to the existing discography.
-    //Else, add the artist to the list, and create a discography with that song as the first element.
-    [oldPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
+//    Keep in mind!: The keys(Artists) are all in the [0] column, and the paired-values are all in the [1] column.
+//    If the artist is already listed, add the song to the existing discography.
+//    Else, add the artist to the list, and create a discography with that song (as the first element).
+    [mutableInputPlayList enumerateObjectsUsingBlock:^(id artistSongPair, NSUInteger idx, BOOL *stop) {
         NSString *theArtist = [self stringTrimmer:artistSongPair[0]];
         NSArray *theDiscography = @[[self stringTrimmer:artistSongPair[1]]];
         
-        if ([[newPlayList allKeys] /* already */ containsObject:theArtist]) {
+        if ([[newPlayList allKeys] containsObject:theArtist]) { // Read this way: "...if newPlaylist allKeys ALREADY contains..."
             NSMutableArray *tempSongs = [NSMutableArray arrayWithArray:[newPlayList valueForKey:theArtist]];
-            [tempSongs addObject:theDiscography];
+            [tempSongs addObject:theDiscography[0]];
             [newPlayList setObject:tempSongs forKey:theArtist];
-            //newPlayList [the key we found is already there] [change the value = set it to a new array based on the old]
+//            newPlayList [the key we found is already there] [change the value = set it to a new array based on the old]
         } else {
         [newPlayList setValue:theDiscography forKey:theArtist];
         }
