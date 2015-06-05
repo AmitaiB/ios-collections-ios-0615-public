@@ -9,6 +9,7 @@
 #import "FISAppDelegate.h"
 #import "FISCollections.h"
 
+
 @implementation FISAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,8 +18,12 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    FISCollections *newFISColl = [[FISCollections alloc] init];
-//    [newFISColl greaterAndLessThan10:@[@100,@1000,@5,@2,@3,@15,@1,@1,@100]];
+    FISCollections *newFISColl = [[FISCollections alloc] init];
+    
+     NSArray *jams = @[@"dave matthews band - tripping billies", @"dave matthews band - #41", @"calvin harris - some techno song", @"avicii - some other dance song", @"oasis - wonderwall", @"oasis - champagne supernova"];
+    
+    NSDictionary *result = [newFISColl organizeSongsByArtist:jams];
+    NSLog(@"Is this working: %@", result);
     return YES;
 }
 
